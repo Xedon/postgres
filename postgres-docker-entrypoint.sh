@@ -32,8 +32,8 @@ main() {
 		if [ -z "$DATABASE_ALREADY_EXISTS" ]; then
 			docker_verify_minimum_env
 
-			if [ -z "$POSTGRES_NON_ADMIN_USER" ]; then
-			    echo "evn var POSTGRES_NON_ADMIN_USER not set"
+			if [ -z "$POSTGRES_NON_ADMIN_USERNAME" ]; then
+			    echo "evn var POSTGRES_NON_ADMIN_USERNAME not set"
 				exit 1
 			fi
 
