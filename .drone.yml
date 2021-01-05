@@ -1,0 +1,29 @@
+---
+kind: pipeline
+name: default
+type: kubernetes
+
+steps:
+- name: finance-portal  
+  image: plugins/docker
+  settings:
+    repo: docker.io/xedonev/postgres
+    registry: docker.io
+    auto_tag: true
+    purge: false
+    dockerfile: Dockerfile
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+- name: slack
+  image: plugins/slack
+  settings:
+    webhook:
+      from_secret: slack_url
+    channel: drone
+  when:
+    status: [ success, failure ]
+trigger:
+  ref:
+    - refs/tags/**
