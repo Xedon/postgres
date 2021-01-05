@@ -1,4 +1,4 @@
-FROM postgres:12.4
+FROM postgres:12.5
 COPY postgres-docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["postgres-docker-entrypoint.sh"]
 # We set the default STOPSIGNAL to SIGINT, which corresponds to what PostgreSQL
